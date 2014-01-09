@@ -2,6 +2,7 @@
 
 use Closure;
 use DateTime;
+use Mongo as MongoClient;
 use Illuminate\Cache\CacheManager;
 
 class Connection {
@@ -62,7 +63,7 @@ class Connection {
 
 		$options = array_get($this->config, 'options', array());
 
-      	$this->connection = new \MongoClient($this->getDsn($config), $options);
+      	$this->connection = new MongoClient($this->getDsn($config), $options);
 
       	//Select database
         $this->db = $this->connection->{$config['database']};
